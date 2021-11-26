@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxet.Tournament.API", "src\Proxet.Tournament.API\Proxet.Tournament.API.csproj", "{6535C418-917D-4B54-BBF2-E9624EA5A869}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxet.Tournament.Tests", "src\Proxet.Tournament.Tests\Proxet.Tournament.Tests.csproj", "{61D29395-761F-4CFB-9BAE-016344FA7E0A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6535C418-917D-4B54-BBF2-E9624EA5A869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6535C418-917D-4B54-BBF2-E9624EA5A869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6535C418-917D-4B54-BBF2-E9624EA5A869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6535C418-917D-4B54-BBF2-E9624EA5A869}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61D29395-761F-4CFB-9BAE-016344FA7E0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61D29395-761F-4CFB-9BAE-016344FA7E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61D29395-761F-4CFB-9BAE-016344FA7E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61D29395-761F-4CFB-9BAE-016344FA7E0A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C5DD955-C0BE-4D23-B36B-C8D63449EAD3}
+	EndGlobalSection
+EndGlobal
