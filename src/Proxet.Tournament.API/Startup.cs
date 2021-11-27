@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
+using Proxet.Tournament.API.Data;
+using Proxet.Tournament.API.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,11 +32,9 @@ namespace Proxet.Tournament.API
         {
             string connectionString = Configuration.GetConnectionString("Default");
 
-            services.AddHealthChecks().AddMongoDb(connectionString, name: "mongodb", timeout: TimeSpan.FromSeconds(3));
-            services.AddSingleton<IMongoClient>(serviceProvider =>
-            {
-                return new MongoClient(connectionString);
-            });
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddScoped<ILobbyRepository, MSSQLLobbyRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -62,7 +62,6 @@ namespace Proxet.Tournament.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHealthChecks("/api/v1/healthcheck");
             });
         }
     }
