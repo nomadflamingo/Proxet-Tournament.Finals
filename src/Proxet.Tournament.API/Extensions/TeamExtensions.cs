@@ -11,10 +11,11 @@ namespace Proxet.Tournament.API.Extensions
     {
         public static TeamsInfoDto AsDto(this Teams teams)
         {
-            PlayerDto[] firstTeam = new PlayerDto[9];
             TeamsInfoDto teamsDto = new();
+            teamsDto.FirstTeam = new PlayerDto[9];
+            teamsDto.SecondTeam = new PlayerDto[9];
 
-            for (int i = 0; i < firstTeam.Length; i++)
+            for (int i = 0; i < teamsDto.FirstTeam.Length; i++)
             {
                 Player firstTeamPlayer = teams.FirstTeam[i];
                 PlayerDto firstTeamPlayerDto = new()
@@ -23,7 +24,10 @@ namespace Proxet.Tournament.API.Extensions
                     VehicleType = firstTeamPlayer.VehicleType,
                 };
                 teamsDto.FirstTeam[i] = firstTeamPlayerDto;
+            }
 
+            for (int i = 0; i < teamsDto.SecondTeam.Length; i++)
+            {
                 Player secondTeamPlayer = teams.SecondTeam[i];
                 PlayerDto secondTeamPlayerDto = new()
                 {
@@ -32,6 +36,7 @@ namespace Proxet.Tournament.API.Extensions
                 };
                 teamsDto.SecondTeam[i] = secondTeamPlayerDto;
             }
+            
 
             return teamsDto;
         }
