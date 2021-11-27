@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Proxet.Tournament.API.Migrations
 {
@@ -11,10 +10,10 @@ namespace Proxet.Tournament.API.Migrations
                 name: "Lobby",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
-                    VehicleType = table.Column<int>(type: "int", nullable: false),
-                    WaitingTime = table.Column<int>(type: "int", nullable: false)
+                    VehicleType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

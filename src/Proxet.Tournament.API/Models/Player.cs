@@ -9,7 +9,7 @@ namespace Proxet.Tournament.API.Models
     public class Player
     {
         [Required]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         
         [Required]
         [MaxLength(35)]
@@ -19,8 +19,5 @@ namespace Proxet.Tournament.API.Models
         [Range(1, 3)]
         public int VehicleType { get; set; }
 
-        [Required]
-        [Range(0, int.MaxValue)]
-        public int WaitingTime { get; set; }
     }
 }

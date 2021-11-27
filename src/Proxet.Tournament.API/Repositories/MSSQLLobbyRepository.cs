@@ -28,7 +28,7 @@ namespace Proxet.Tournament.API.Repositories
 
         public IEnumerable<Player> GetSortedPlayers()
         {
-            return _db.Lobby.OrderByDescending(p => p.WaitingTime).ToList();
+            return _db.Lobby.OrderBy(player => player.Id).ToList();
         }
 
         public void DeletePlayer(Player player)

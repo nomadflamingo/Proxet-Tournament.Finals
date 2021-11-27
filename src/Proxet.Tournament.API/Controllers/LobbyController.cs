@@ -30,9 +30,7 @@ namespace Proxet.Tournament.API.Controllers
         {
             Player player = new()
             {
-                Id = Guid.NewGuid(),
                 Name = playerInfo.Name,
-                WaitingTime = new Random().Next(0, 100),
                 VehicleType = playerInfo.VehicleType
             };
 
