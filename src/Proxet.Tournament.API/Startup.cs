@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,13 @@ namespace Proxet.Tournament.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = Configuration.GetConnectionString("Default");
+
+            services.AddHealthChecks().AddMongoDb(connectionString, name: "mongodb", timeout: TimeSpan.FromSeconds(3));
+            services.AddSingleton<IMongoClient>(serviceProvider =>
+            {
+                return new MongoClient(connectionString);
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -53,6 +62,7 @@ namespace Proxet.Tournament.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/api/v1/healthcheck");
             });
         }
     }
